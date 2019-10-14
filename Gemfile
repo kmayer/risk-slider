@@ -19,6 +19,8 @@ gem "sassc-rails"
 gem "simple_form"
 gem "slim-rails"
 gem "uglifier"
+gem "react_on_rails", "11.1.4"
+gem "webpacker", "~> 3"
 
 # Tools
 gem "awesome_print"
