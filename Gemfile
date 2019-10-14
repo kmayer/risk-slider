@@ -62,3 +62,5 @@ group :test do
   gem "simplecov"
   gem "webdrivers"
 end
+
+gem 'mini_racer', platforms: :ruby
