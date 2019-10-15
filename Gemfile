@@ -15,11 +15,11 @@ gem "rails", "~> 6.0.0"
 gem "autoprefixer-rails"
 gem "bootstrap", "~> 4.3.1"
 gem "jquery-rails"
+gem "react_on_rails", "11.1.4"
 gem "sassc-rails"
 gem "simple_form"
 gem "slim-rails"
 gem "uglifier"
-gem "react_on_rails", "11.1.4"
 gem "webpacker", "~> 3"
 
 # Tools
