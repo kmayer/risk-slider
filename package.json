@@ -33,6 +33,6 @@
     "lint:eslint": "eslint 'app/javascript/**/*.{js,jsx}'",
     "lint:stylelint": "stylelint app/javascript/**/*.scss",
     "test": "react-scripts test",
-    "test:coverage": "react-scripts test --env=jsdom --coverage",
+    "test:coverage": "react-scripts test --env=jsdom --coverage"
   }
 }
