@@ -1,9 +1,6 @@
 .jumbotron
-  h1 Hello, world!
-  br
-  p Welcome to your newly generated rails application...
-  p Meander around the code to see what's been done for you. Many small, and a few not-so-small, customizations have been made.
-  p Custom generator templates create views that are bootstrap compatible and specs that are factory-aware and follow best practices.
-  p Your application is ready for easy deployment to heroku.
+  p This is a small application to automate the "risk slider" exercise where you have two or more business goals, but you are constrained in your ability to deliver them all. Which ones are more important?
 
-= react_component("HelloWorldApp", props: @hello_world_props, prerender: false)
+= link_to "New Exercise", new_exercise_path, class: "btn btn-primary"
+
+/ = react_component("HelloWorldApp", props: @hello_world_props, prerender: false)
