@@ -1,7 +1,7 @@
 class VotesController < ApplicationController
   def show
     @exercise, @vote = objects
-    @props = {metrics: @vote.props}
+    @props = {votes: @vote.props}
   end
 
   def update

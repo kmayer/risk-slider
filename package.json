@@ -33,6 +33,8 @@
     "webpack-dev-server": "^3.8.2"
   },
   "scripts": {
+    "server:dev": "heroku local -f Procfile.dev",
+    "server:dev-server": "heroku local -f Procfile.dev-server",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:ci": "jest --ci --coverage --color --runInBand",

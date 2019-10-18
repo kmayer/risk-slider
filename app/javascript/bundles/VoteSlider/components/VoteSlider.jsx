@@ -1,27 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { actions } from "../store/voteSliderSlice";
 
-const mapStateToProps = state => ({ metrics: state.metrics });
+const mapStateToProps = state => ({ votes: state.votes });
 
 class VoteSliderComponent extends React.Component {
-  static propTypes = {
-    metrics: PropTypes.object.isRequired,
-    // vote: PropTypes.func.isRequired
-  };
-
-  state = {
-    metrics: {}
-  };
-
   render() {
     return (
       <div>
         <ul>
-          {Object.keys(this.props.metrics).map(metric => (
-            <li>{metric} = {this.props.metrics[metric]}</li>
-          )) }
+          {Object.keys(this.props.votes).map(metric => (
+            <li>
+              {metric} = {this.props.votes[metric]}
+            </li>
+          ))}
         </ul>
       </div>
     );
@@ -29,9 +21,7 @@ class VoteSliderComponent extends React.Component {
 }
 export const { VoteSlider } = VoteSliderComponent;
 
-export default VoteSliderComponent;
-
-// export default connect(
-//   mapStateToProps,
-//   actions
-// )(VoteSliderComponent);
+export default connect(
+  mapStateToProps,
+  actions
+)(VoteSliderComponent);
