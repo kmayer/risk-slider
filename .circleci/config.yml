@@ -4,7 +4,7 @@ jobs:
     parallelism: 1
     working_directory: ~/raygun-react-on-rails
     docker:
-      - image: circleci/ruby:2.6.3-node-browsers
+      - image: circleci/ruby:2.6.5-node-browsers
         environment:
           BUNDLE_JOBS: 4
           BUNDLE_PATH: vendor/bundle
@@ -40,8 +40,24 @@ jobs:
           paths:
             - vendor/bundle
 
-      # Rubocop compliance
-      - run: bundle exec rubocop
+      # Restore node-modules cache, with fallbacks to increase the likeliness of a cache hit
+      - restore_cache:
+          keys:
+            - node-modules-cache-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - node-modules-cache-{{ arch }}-{{ .Branch }}
+            - node-modules-cache-{{ arch }}-
+
+      # Install dependencies
+      - run:
+          name: yarn install
+          command: |
+            yarn install --cache-folder .yarn-cache
+
+      # Store node modules cache
+      - save_cache:
+          key: node-modules-cache-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - .yarn-cache
 
       # Using structure.sql? Install postgresql-client for loading structure.
       #- run: sudo apt-get install postgresql-client
@@ -64,6 +80,9 @@ jobs:
                             --out ./test-results/rspec/results.xml -- \
                             $TEST_FILES
 
+      # Run our JavaScript tests
+      - run: yarn test:ci
+
       # Save test results, so the the timings can be used in future parallel runs
       - store_test_results:
           path: ./test-results
@@ -76,3 +95,8 @@ jobs:
       # Save screenshots for debugging
       - store_artifacts:
           path: ./tmp/screenshots
+
+      # Linters compliance
+      - run: bundle exec rubocop
+      - run: yarn lint:js
+      - run: yarn lint:css
