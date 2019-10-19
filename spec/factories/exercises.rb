@@ -15,6 +15,6 @@
 
 FactoryBot.define do
   factory :exercise do
-    metrics { ["defect_free", "finish_fast", "great_ux", "lots_of_features", "visually_stunning"] }
+    metrics { %w[defect_free finish_fast great_ux lots_of_features visually_stunning] }
   end
 end

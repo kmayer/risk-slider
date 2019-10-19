@@ -3,10 +3,15 @@ h1 Ready to Rock & Roll
 .jumbotron
   p Share this URL with all your friends: #{exercise_vote_url(@exercise)}
 
-ul
-  - @exercise.metrics.each do |metric|
-    li= metric
-
-ol
-  - @votes.each do |voter|
-    li voter ##{voter.id}
+table
+  thead
+    tr
+      th Voter
+      - @exercise.metrics.each do |metric|
+        th= metric.humanize
+  tbody
+    - @votes.each do |voter|
+      tr
+        td voter ##{voter.id}
+        - @exercise.metrics.each do |metric|
+          td= voter.props[metric]

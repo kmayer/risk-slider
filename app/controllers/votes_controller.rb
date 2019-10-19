@@ -1,10 +1,16 @@
 class VotesController < ApplicationController
   def show
     @exercise, @vote = objects
-    @props = {votes: @vote.props}
+    @props = { votes: @vote.props }
   end
 
   def update
+    @exercise, @vote = objects
+    @exercise.metrics.each do |metric|
+      @vote.props[metric] = params[metric].to_i if params[metric].present?
+    end
+    @vote.save!
+    redirect_to exercise_vote_url(@exercise)
   end
 
   private

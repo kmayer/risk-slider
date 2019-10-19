@@ -10,8 +10,8 @@ const votes = createSlice({
   initialState: {},
   reducers: {
     vote(state, action) {
-      console.log(state, action);
-      return state;
+      const { name, value } = action.payload;
+      return { ...state, [name]: value };
     }
   }
 });

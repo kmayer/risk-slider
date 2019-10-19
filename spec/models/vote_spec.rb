@@ -6,12 +6,12 @@ RSpec.describe Vote, type: :model do
 
     vote = exercise.votes.build
 
-    expect(vote.props).to eq({
-                                 "defect_free" => 0,
-                                 "finish_fast" => 0,
-                                 "great_ux" => 0,
-                                 "lots_of_features" => 0,
-                                 "visually_stunning" => 0
-                             })
+    expect(vote.props).to eq(
+      "defect_free" => 0,
+        "finish_fast" => 0,
+        "great_ux" => 0,
+        "lots_of_features" => 0,
+        "visually_stunning" => 0
+    )
   end
 end

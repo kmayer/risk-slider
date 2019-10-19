@@ -8,7 +8,7 @@ class ExercisesController < ApplicationController
   def create
     @exercise = Exercise.new(params[:exercise])
     # Just fill something in for now.
-    @exercise.metrics = ["defect_free", "finish_fast", "great_ux", "lots_of_features", "visually_stunning"]
+    @exercise.metrics = %w[defect_free finish_fast great_ux lots_of_features visually_stunning]
     @exercise.save!
     redirect_to @exercise
   end

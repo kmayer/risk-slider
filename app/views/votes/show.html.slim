@@ -2,4 +2,4 @@ h1 Vote Early, Vote Often
 p This is Exercise ##{@exercise.id}
 p Your are Voter ##{@vote.id}
 
-= react_component("VoteSliderApp", props: @props, prerender: false)
+= react_component("VoteSliderApp", props: @props.merge(url: exercise_vote_path(@exercise)), prerender: false)

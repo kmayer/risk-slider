@@ -1,7 +1,7 @@
 import React from "react";
 import { Provider } from "react-redux";
 
-import configureStore from "./store/voteSliderStore";
+import configureStore from "./store/voteStore";
 import VoteSlider from "./components/VoteSlider";
 import ErrorBoundary from "./components/ErrorBoundary";
 
